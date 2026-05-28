@@ -1,0 +1,32 @@
+aid: whatjobs
+name: WhatJobs
+description: "Job search engine"
+url: https://www.whatjobs.com/affiliates
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Jobs"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Jobs
+  - Public APIs
+apis:
+  - name: WhatJobs
+    description: "Job search engine"
+    humanURL: https://www.whatjobs.com/affiliates
+    baseURL: https://www.whatjobs.com/affiliates
+    tags:
+      - Jobs
+    properties:
+      - type: Documentation
+        url: https://www.whatjobs.com/affiliates
+common:
+  - type: Website
+    url: https://www.whatjobs.com/affiliates
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
