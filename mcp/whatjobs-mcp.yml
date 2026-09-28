@@ -16,6 +16,10 @@ deployment:
 tools_count: 1
 tools:
 - name: search_jobs
-  description: ''
+  description: Search WhatJobs for public job listings using separate structured search fields.  Use this
+    tool only when the user is looking for jobs, vacancies, roles, internships, work opportunities, or
+    asks to see more job results.  The location is the
 tools_source: live tools/list via initialize handshake, 2026-09-12 (signals/audit_mcp_authorship.py --probe)
 authorship: provider
+descriptions_source: live tools/list (authorship probe or saved capture); filled by backfill-tools-from-authorship.py
+  --descriptions, 2026-09-28
