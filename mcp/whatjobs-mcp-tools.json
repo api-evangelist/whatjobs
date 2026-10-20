@@ -1,0 +1,66 @@
+{
+  "endpoint": "https://mcp.whatjobs.com/mcp",
+  "captured": "2026-10-20",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-06-18",
+  "server_info": {
+    "name": "WhatJobs MCP",
+    "version": "1.29.1"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "search_jobs",
+        "description": "Search WhatJobs for public job listings using separate structured search fields.\n\nUse this tool only when the user is looking for jobs, vacancies, roles, internships, work opportunities, or asks to see more job results.\n\nThe location is the job search location requested by the user, such as a city, region, country, or remote preference. It is not the user's current physical location unless the user explicitly asks to search near them.\n\nInputs:\n- keyword: the job role, job function, skill, or industry only.\n- location: the city, region, country, or remote preference only.\n- market: optional. The country market for the search. If omitted it is inferred from location (e.g. \"Johannesburg, South Africa\" -> za). Supported values: uk, us, de, ca, in, pk, br, es, ae, mx, ar, za.\n- chunk_number: the result batch number. Use 1 for the first search and increment when the user asks to see more.\n- search_session_id: optional anonymous search-session ID returned from the previous result. Use only when continuing the same search, such as the next chunk. Do not ask the user for it.\n\nDo not include the location inside keyword.\nDo not include filler words like jobs, vacancies, roles, hiring, in, near, around, at, or within in keyword.\n\nExamples:\n- sales in Bracknell -> keyword=\"sales\", location=\"Bracknell\", market=\"uk\"\n- software engineer jobs near Manchester -> keyword=\"software engineer\", location=\"Manchester\", market=\"uk\"\n- driver jobs in Toronto -> keyword=\"driver\", location=\"Toronto\", market=\"ca\"\n- nurse jobs in Berlin -> keyword=\"nurse\", location=\"Berlin\", market=\"de\"\n- teacher jobs in Sao Paulo -> keyword=\"teacher\", location=\"Sao Paulo\", market=\"br\"\n- chef jobs in Madrid -> keyword=\"chef\", location=\"Madrid\", market=\"es\"\n- accountant jobs in Dubai -> keyword=\"accountant\", location=\"Dubai, United Arab Emirates\", market=\"ae\"\n- marketing jobs in Mexico City -> keyword=\"marketing\", location=\"Mexico City, Mexico\", market=\"mx\"\n- developer jobs in Buenos Aires -> keyword=\"developer\", location=\"Buenos Aires, Argentina\", market=\"ar\"\n- sales jobs in Johannesburg -> keyword=\"sales\", location=\"Johannesburg, South Africa\", market=\"za\"\n\nReturns structured job listings with title, company, location, salary when provided, posted date, summary, description, apply URL, pagination metadata, and anonymous search-session metadata for the WhatJobs widget UI.",
+        "inputSchema": {
+          "properties": {
+            "keyword": {
+              "title": "Keyword",
+              "type": "string"
+            },
+            "location": {
+              "title": "Location",
+              "type": "string"
+            },
+            "market": {
+              "default": "",
+              "title": "Market",
+              "type": "string"
+            },
+            "chunk_number": {
+              "default": 1,
+              "title": "Chunk Number",
+              "type": "integer"
+            },
+            "search_session_id": {
+              "default": "",
+              "title": "Search Session Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "keyword",
+            "location"
+          ],
+          "title": "search_jobsArguments",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "openWorldHint": true
+        },
+        "_meta": {
+          "ui": {
+            "resourceUri": "ui://whatjobs/view.html"
+          },
+          "_meta": {
+            "openai/outputTemplate": "ui://whatjobs/view.html",
+            "openai/toolInvocation/invoking": "Searching jobs...",
+            "openai/toolInvocation/invoked": "Results ready."
+          }
+        }
+      }
+    ]
+  }
+}
